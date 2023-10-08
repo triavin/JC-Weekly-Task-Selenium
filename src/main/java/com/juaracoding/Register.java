@@ -1,7 +1,5 @@
 package com.juaracoding;
 
-import net.bytebuddy.implementation.bytecode.assign.TypeCasting;
-
 public class Register {
     // add object driver
     Driver driver = new Driver();
@@ -29,5 +27,15 @@ public class Register {
         driver.clickId("mat-option-11");
         driver.sendId(elementAnswer, answer);
         driver.clickId("registerButton");
+        driver.delay(5);
+
+        // get url baru
+        String newUrl = driver.driver.getCurrentUrl();
+
+        if (newUrl.equals(url)){
+            System.out.println("Registrasi Gagal");
+        } else {
+            System.out.println("Registrasi Berhasil! Silahkan login");
+        }
     }
 }
