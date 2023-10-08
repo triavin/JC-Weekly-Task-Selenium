@@ -1,14 +1,21 @@
 package com.juaracoding;
 
+import org.openqa.selenium.WebDriver;
+
 public class Register {
     // add object driver
-    Driver driver = new Driver();
+    private Driver driver;
 
     // inisialisasi variable untuk id pada form registrasi
     public String elementUsername = "emailControl";
     public String elementPassword = "passwordControl";
     public String elementRepassword = "repeatPasswordControl";
     public String elementAnswer = "securityAnswerControl";
+
+    public Register(WebDriver driver){
+        this.driver = new Driver(driver);
+
+    }
     public void getRegis(String url, String email, String pass, String answer){
         // akses url
         driver.getUrl(url);
@@ -16,8 +23,11 @@ public class Register {
         // delay 3 detik untuk menunggu pop up dialog
         driver.delay(3);
 
-        // menutup pop up dialog menggunakan click xpath
-        driver.clickXpath("//*[@id=\"mat-dialog-0\"]/app-welcome-banner/div/div[2]/button[2]");
+
+        // verification for pop up
+        if (driver.findCode("app-welcome-banner")){
+            driver.closePopUp();
+        }
 
         // mengisi form registrasi
         driver.sendId(elementUsername,email);
@@ -30,10 +40,11 @@ public class Register {
         driver.delay(5);
 
         // get url baru
-        String newUrl = driver.driver.getCurrentUrl();
+        String newUrl = driver.getCurrentLink();
 
         if (newUrl.equals(url)){
             System.out.println("Registrasi Gagal");
+            //driver.quit();
         } else {
             System.out.println("Registrasi Berhasil! Silahkan login");
         }
