@@ -6,7 +6,11 @@ public class MainApp {
         String path = "C:\\Users\\Aldi Triavin\\Documents\\Juara Coding\\Tools\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver",path);
         Register regis = new Register();
-        regis.getRegis("https://juice-shop.herokuapp.com/#/register", "aldi123@gmai.com", "Dre1Sd!", "Regular Show");
+        String url = "https://juice-shop.herokuapp.com/#/register";
+        String email = "aldi2@gmai.com";
+        String pass = "Dre1Sd!";
+        String answer = "Regular Show";
+        regis.getRegis(url, email , pass, answer);
 
     }
 }
