@@ -17,7 +17,7 @@ public class Driver {
     public void getUrl(String url){
         this.driver.get(url);
         this.driver.manage().window().maximize();
-        System.out.println("Open Url : " + url);
+        System.out.println("Open Url : " + getCurrentLink());
     }
 
     public void clickId(String id){
@@ -69,6 +69,11 @@ public class Driver {
         System.out.println(txt);
     }
 
+    public void scriptingXpath(String xpath) {
+        String txt = this.driver.findElement(By.xpath(xpath)).getText();
+        System.out.println(txt);
+    }
+
     public void delay(long detik){
         try{
             Thread.sleep(detik * 1000);
@@ -89,4 +94,7 @@ public class Driver {
         return this.driver.getCurrentUrl();
     }
 
+    public String scriptingClass(String Class) {
+       return driver.findElement(By.className(Class)).getText();
+    }
 }

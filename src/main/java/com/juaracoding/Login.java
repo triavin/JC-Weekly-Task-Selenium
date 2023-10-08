@@ -20,8 +20,6 @@ public class Login{
             driver.getUrl(url);
         }
 
-        driver.delay(2);
-
         // verification for pop up
         if (driver.findCode("app-welcome-banner")){
             driver.closePopUp();
